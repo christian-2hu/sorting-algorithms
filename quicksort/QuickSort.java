@@ -32,8 +32,9 @@ public class QuickSort {
       temp = arr[leftPtr];
       arr[leftPtr] = arr[pivot];
       arr[pivot] = temp;
-      quicksort(arr, low, pivot-1);
-      quicksort(arr, pivot+1, high);
+      // since leftPtr became our new pivot's offset...
+      quicksort(arr, low, leftPtr-1);
+      quicksort(arr, leftPtr+1, high);
    }
    public int[] generateArray() {
       Random random = new Random();
