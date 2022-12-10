@@ -6,11 +6,36 @@ import java.util.Random;
 public class QuickSort {
    public static void main(String[] args) {
       var qs = new QuickSort();
+      //int[] array = {8, 2, 4, 7, 1, 3, 9, 6, 5};
       int[] array = qs.generateArray();
+      System.out.println("Array before quick sorting");
+      qs.printArr(array);
+      qs.quicksort(array, 0, array.length-1);
+      System.out.println("Array after quick sorting");
       qs.printArr(array);
    }
    public void quicksort(int[] arr, int low, int high) {
-
+      if(low >= high){
+         return;
+      }
+      int pivot = high;
+      int leftPtr = low-1;
+      int temp = -1;
+      for(int i = low; i < high; i++) {
+         if(arr[i] < arr[pivot]) {
+            leftPtr++;
+            temp = arr[leftPtr];
+            arr[leftPtr] = arr[i];
+            arr[i] = temp;
+         }
+      }
+      // final rest place of our pivot
+      leftPtr++;
+      temp = arr[leftPtr];
+      arr[leftPtr] = arr[pivot];
+      arr[pivot] = temp;
+      quicksort(arr, low, pivot-1);
+      quicksort(arr, pivot+1, high);
    }
    public int[] generateArray() {
       Random random = new Random();
