@@ -6,5 +6,5 @@ Implement:
 - [ ] selection
 - [ ] insertion
 - [ ] heapsort
-- [ ] quicksort
+- [x] quicksort
 - [ ] mergesort
